@@ -11,10 +11,12 @@ Abonent::Abonent()
 
 void Abonent::init(const char* f, int w, int h, const char* i)
 {
+	delete[] fio;
 	fio = new char[strlen(f) + 1];
 	strcpy_s(fio, strlen(f) + 1, f);
 	workPhone = w;
 	homePhone = h;
+	delete[]info;
 	info = new char[strlen(i) + 1];
 	strcpy_s(info, strlen(i) + 1, i);
 }
