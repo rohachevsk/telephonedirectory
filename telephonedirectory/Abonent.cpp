@@ -3,21 +3,25 @@
 using namespace std;
 Abonent::Abonent()
 {
+	fio = nullptr;
+	workPhone = 0;
+	homePhone = 0;
+	info = nullptr;
 }
 
-void Abonent::init(const char* f, const char* h, const char* w, const char* m, const char* i)
+void Abonent::init(const char* f, int w, int h, const char* i)
 {
 	fio = new char[strlen(f) + 1];
 	strcpy_s(fio, strlen(f) + 1, f);
-	strcpy_s(homePhone, 20, h);
-	strcpy_s(workPhone, 20, w);
-	strcpy_s(mobilePhone, 20, m);
-	strcpy_s(info, 100, i);
+	workPhone = w;
+	homePhone = h;
+	info = new char[strlen(i) + 1];
+	strcpy_s(info, strlen(i) + 1, i);
 }
-
 Abonent::~Abonent()
 {
 	delete[] fio;
+	delete[] info;
 }
 
 void Abonent::print()
@@ -25,7 +29,6 @@ void Abonent::print()
 	cout << "FIO: " << fio << endl;
 	cout << "Home Phone: " << homePhone << endl;
 	cout << "Work Phone: " << workPhone << endl;
-	cout << "Mobile Phone: " << mobilePhone << endl;
 	cout << "Info: " << info << endl;
 }
 
@@ -35,26 +38,20 @@ void Abonent::setFio(const char* f)
 	fio = new char[strlen(f) + 1];
 	strcpy_s(fio, strlen(f) + 1, f);
 }
-
-void Abonent::setHomePhone(const char* h)
+void Abonent::setWorkPhone(int w)
 {
-	strcpy_s(homePhone, 20, ð);
+	workPhone = w;
 }
 
-void Abonent::setWorkPhone(const char* w)
+void Abonent::setHomePhone(int h)
 {
-	strcpy_s(workPhone, 20, w);
+	homePhone = h;
 }
-
-void Abonent::setMobilePhone(const char* m)
-{
-	strcpy_s(mobilePhone, 20, m);
-}
-
-
 void Abonent::setInfo(const char* i)
 {
-	strcpy_s(info, 100, i);
+	delete[]i;
+	info = new char[strlen(i) + 1];
+	strcpy_s(info, strlen(i) + 1, i);
 }
 
 const char* Abonent::getFio()
@@ -62,19 +59,14 @@ const char* Abonent::getFio()
 	return fio;
 }
 
-const char* Abonent::getHomePhone()
+int Abonent::getHomePhone()
 {
 	return homePhone;
 }
 
-const char* Abonent::getWorkPhone()
+int Abonent::getWorkPhone()
 {
 	return workPhone;
-}
-
-const char* Abonent::getMobilePhone()
-{
-	return mobilePhone;
 }
 
 const char* Abonent::getInfo()
