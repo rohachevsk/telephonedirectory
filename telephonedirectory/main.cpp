@@ -2,6 +2,17 @@
 #include "Abonent.h"
 using namespace std;
 
+int searchAbonentByName(Abonent directory[], int size, const char* nameToSearch)
+{
+	for (int i = 0; i < size; ++i)
+	{
+		if(directory[i].getFio() == nameToSearch)
+		{
+			return i;
+		}
+	}
+}
+
 int main()
 {
 	const int SIZE = 3;
@@ -33,4 +44,6 @@ int main()
 		directory[i].print();
 		cout << endl;
 	}
+	
+
 }
